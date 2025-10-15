@@ -1,6 +1,65 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '8.1.0-alpha07' apply false
-    id 'com.android.library' version '8.1.0-alpha07' apply false
+    id 'com.android.application' version '8.1.4' apply false
+    id 'com.android.library' version '8.1.4' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+}
+def VERSION = "1.0"
+def versionName = buildVersionName(VERSION)
+
+allprojects {
+    project.group = 'com.verve.shiqi.quickjs'
+    project.version = versionName
+}
+
+subprojects { project ->
+    apply plugin: 'maven-publish'
+    publishing {
+        repositories {
+            maven {
+                name = "PublicJfrog"
+                url = uri("https://verve.jfrog.io/artifactory/verve-gradle-release-local")
+                credentials {
+                    username = "paste_username"
+                    password = "paste_password"
+                }
+            }
+        }
+    }
+}
+
+static def getBranchName() {
+    return System.getenv("BRANCH_NAME") as String ?: "git rev-parse --abbrev-ref HEAD".execute().text.trim()
+}
+
+apply plugin: 'distribution'
+
+distributions {
+    release {
+        contents { dist ->
+            subprojects { project ->
+                if (!project.file(".distexclude").exists()) {
+                    project.pluginManager.withPlugin("aar-artifact") {
+                        project.afterEvaluate {
+                            dist.from(project.tasks.named("bundleReleaseAar").get().outputs.files)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+static def buildVersionName(version) {
+    def branch = getBranchName()
+    if (branch.startsWith("quickjs_release/")) {
+        return version
+    }
+    if (branch.startsWith('feature/')) {
+        return "${version}-${branch - 'feature/'}-${buildSuffix()}-SNAPSHOT"
+    }
+    return "$version-${branch}-${buildSuffix()}-SNAPSHOT"
+}
+static def buildSuffix() {
+    return System.getenv("BUILD_NUMBER") as String ?: "local-build"
 }

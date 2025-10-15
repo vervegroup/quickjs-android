@@ -10,6 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
+        maven {
+            url "https://verve.jfrog.io/ui/native/verve-gradle-release-local/"
+        }
     }
 }
 rootProject.name = "QuickJS"

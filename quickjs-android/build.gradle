@@ -63,6 +63,29 @@ android {
     }
 }
 
+publishing.publications {
+    release(MavenPublication) {
+        groupId project.group
+        artifactId project.name
+        version project.version
+
+        project.afterEvaluate {
+            artifact project.tasks.named("bundleReleaseAar").get()
+        }
+
+        pom.withXml {
+            def dependencies = asNode().appendNode('dependencies')
+            project.configurations.api.dependencies.withType(org.gradle.api.internal.artifacts.dependencies.AbstractModuleDependency).each {
+                def dependency = dependencies.appendNode('dependency')
+                dependency.appendNode('groupId', it.group)
+                dependency.appendNode('artifactId', it.name)
+                dependency.appendNode('version', it.version)
+                dependency.appendNode('scope', "compile")
+            }
+        }
+    }
+}
+
 dependencies {
     implementation 'androidx.annotation:annotation:1.6.0'
 }
