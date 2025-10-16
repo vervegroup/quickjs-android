@@ -35,7 +35,7 @@ typedef struct QJRuntime {
 } QJRuntime;
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createRuntime(JNIEnv *env, jclass __unused clazz) {
+Java_com_verve_shiqi_quickjs_QuickJS_createRuntime(JNIEnv *env, jclass __unused clazz) {
     QJRuntime *qj_rt = malloc(sizeof(QJRuntime));
     CHECK_NULL_RET(env, qj_rt, MSG_OOM);
     JSRuntime *rt = JS_NewRuntime();
@@ -46,7 +46,7 @@ Java_com_shiqi_quickjs_QuickJS_createRuntime(JNIEnv *env, jclass __unused clazz)
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_setRuntimeMallocLimit(
+Java_com_verve_shiqi_quickjs_QuickJS_setRuntimeMallocLimit(
     JNIEnv *env,
     jclass __unused clazz,
     jlong runtime,
@@ -58,7 +58,7 @@ Java_com_shiqi_quickjs_QuickJS_setRuntimeMallocLimit(
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_setRuntimeMaxStackSize(
+Java_com_verve_shiqi_quickjs_QuickJS_setRuntimeMaxStackSize(
         JNIEnv *env,
         jclass __unused clazz,
         jlong runtime,
@@ -91,7 +91,7 @@ static int on_interrupt(JSRuntime __unused *rt, void *opaque) {
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_setRuntimeInterruptHandler(
+Java_com_verve_shiqi_quickjs_QuickJS_setRuntimeInterruptHandler(
     JNIEnv *env,
     jclass __unused clazz,
     jlong runtime,
@@ -144,7 +144,7 @@ int leak_trigger(const char* _, ...) {
 #endif
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_destroyRuntime(
+Java_com_verve_shiqi_quickjs_QuickJS_destroyRuntime(
     JNIEnv *env,
     jclass __unused clazz,
     jlong runtime
@@ -170,7 +170,7 @@ Java_com_shiqi_quickjs_QuickJS_destroyRuntime(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createContext(
+Java_com_verve_shiqi_quickjs_QuickJS_createContext(
     JNIEnv *env,
     jclass __unused clazz,
     jlong runtime
@@ -189,7 +189,7 @@ Java_com_shiqi_quickjs_QuickJS_createContext(
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_destroyContext(
+Java_com_verve_shiqi_quickjs_QuickJS_destroyContext(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -211,7 +211,7 @@ Java_com_shiqi_quickjs_QuickJS_destroyContext(
     } while (0)
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueUndefined(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueUndefined(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -228,7 +228,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueUndefined(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueNull(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueNull(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -245,7 +245,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueNull(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueBoolean(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueBoolean(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -263,7 +263,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueBoolean(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueInt(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueInt(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -281,7 +281,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueInt(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueFloat64(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueFloat64(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -299,7 +299,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueFloat64(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueString(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueString(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -324,7 +324,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueString(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueObject(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueObject(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -341,7 +341,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueObject(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueArray(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueArray(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -390,56 +390,56 @@ METHOD_NAME(                                                                    
 }
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferZ,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferZ,
     jbooleanArray,
     jboolean,
     GetBooleanArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferB,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferB,
     jbyteArray,
     jbyte,
     GetByteArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferC,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferC,
     jcharArray,
     jchar,
     GetCharArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferS,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferS,
     jshortArray,
     jshort,
     GetShortArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferI,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferI,
     jintArray,
     jint,
     GetIntArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferJ,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferJ,
     jlongArray,
     jlong,
     GetLongArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferF,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferF,
     jfloatArray,
     jfloat,
     GetFloatArrayRegion
 )
 
 CREATE_VALUE_ARRAY_BUFFER_METHOD(
-    Java_com_shiqi_quickjs_QuickJS_createValueArrayBufferD,
+    Java_com_verve_shiqi_quickjs_QuickJS_createValueArrayBufferD,
     jdoubleArray,
     jdouble,
     GetDoubleArrayRegion
@@ -497,7 +497,7 @@ static jlong createValueFunction(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueFunction(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueFunction(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -513,7 +513,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueFunction(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueFunctionS(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueFunctionS(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -536,7 +536,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueFunctionS(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValueJavaObject(
+Java_com_verve_shiqi_quickjs_QuickJS_createValueJavaObject(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -554,7 +554,7 @@ Java_com_shiqi_quickjs_QuickJS_createValueJavaObject(
 }
 
 JNIEXPORT jlongArray JNICALL
-Java_com_shiqi_quickjs_QuickJS_createValuePromise(
+Java_com_verve_shiqi_quickjs_QuickJS_createValuePromise(
     JNIEnv *env,
     __unused jclass clazz,
     jlong context
@@ -600,7 +600,7 @@ Java_com_shiqi_quickjs_QuickJS_createValuePromise(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_defineValueProperty__JJIJI(
+Java_com_verve_shiqi_quickjs_QuickJS_defineValueProperty__JJIJI(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -622,7 +622,7 @@ Java_com_shiqi_quickjs_QuickJS_defineValueProperty__JJIJI(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_defineValueProperty__JJLjava_lang_String_2JI(
+Java_com_verve_shiqi_quickjs_QuickJS_defineValueProperty__JJLjava_lang_String_2JI(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -651,7 +651,7 @@ Java_com_shiqi_quickjs_QuickJS_defineValueProperty__JJLjava_lang_String_2JI(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueTag(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueTag(
     JNIEnv *env,
     jclass __unused clazz,
     jlong value
@@ -662,7 +662,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueTag(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_isValueArray(
+Java_com_verve_shiqi_quickjs_QuickJS_isValueArray(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -676,7 +676,7 @@ Java_com_shiqi_quickjs_QuickJS_isValueArray(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_isValueArrayBuffer(
+Java_com_verve_shiqi_quickjs_QuickJS_isValueArrayBuffer(
         JNIEnv *env,
         jclass __unused clazz,
         jlong context,
@@ -690,7 +690,7 @@ Java_com_shiqi_quickjs_QuickJS_isValueArrayBuffer(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_isValueFunction(
+Java_com_verve_shiqi_quickjs_QuickJS_isValueFunction(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -704,7 +704,7 @@ Java_com_shiqi_quickjs_QuickJS_isValueFunction(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_invokeValueFunction(
+Java_com_verve_shiqi_quickjs_QuickJS_invokeValueFunction(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -741,7 +741,7 @@ Java_com_shiqi_quickjs_QuickJS_invokeValueFunction(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueProperty__JJI(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueProperty__JJI(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -765,7 +765,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueProperty__JJI(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueProperty__JJLjava_lang_String_2(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueProperty__JJLjava_lang_String_2(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -795,7 +795,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueProperty__JJLjava_lang_String_2(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_setValueProperty__JJIJ(
+Java_com_verve_shiqi_quickjs_QuickJS_setValueProperty__JJIJ(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -818,7 +818,7 @@ Java_com_shiqi_quickjs_QuickJS_setValueProperty__JJIJ(
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_setValueProperty__JJLjava_lang_String_2J(
+Java_com_verve_shiqi_quickjs_QuickJS_setValueProperty__JJLjava_lang_String_2J(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -880,7 +880,7 @@ METHOD_NAME(                                                                    
 }
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toBooleanArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toBooleanArray,
     jbooleanArray,
     jboolean,
     1,
@@ -890,7 +890,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toByteArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toByteArray,
     jbyteArray,
     jbyte,
     1,
@@ -900,7 +900,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toCharArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toCharArray,
     jcharArray,
     jchar,
     2,
@@ -910,7 +910,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toShortArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toShortArray,
     jshortArray,
     jshort,
     2,
@@ -920,7 +920,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toIntArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toIntArray,
     jintArray,
     jint,
     4,
@@ -930,7 +930,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toLongArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toLongArray,
     jlongArray,
     jlong,
     8,
@@ -940,7 +940,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toFloatArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toFloatArray,
     jfloatArray,
     jfloat,
     4,
@@ -950,7 +950,7 @@ TO_ARRAY(
 )
 
 TO_ARRAY(
-    Java_com_shiqi_quickjs_QuickJS_toDoubleArray,
+    Java_com_verve_shiqi_quickjs_QuickJS_toDoubleArray,
     jdoubleArray,
     jdouble,
     8,
@@ -968,7 +968,7 @@ TO_ARRAY(
     } while (0)
 
 JNIEXPORT jboolean JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueBoolean(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueBoolean(
     JNIEnv *env,
     jclass __unused clazz,
     jlong value
@@ -980,7 +980,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueBoolean(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueInt(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueInt(
     JNIEnv *env,
     jclass __unused clazz,
     jlong value
@@ -992,7 +992,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueInt(
 }
 
 JNIEXPORT jdouble JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueFloat64(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueFloat64(
     JNIEnv *env,
     jclass __unused clazz,
     jlong value
@@ -1004,7 +1004,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueFloat64(
 }
 
 JNIEXPORT jstring JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueString(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueString(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -1029,7 +1029,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueString(
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_shiqi_quickjs_QuickJS_getValueJavaObject(
+Java_com_verve_shiqi_quickjs_QuickJS_getValueJavaObject(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -1043,7 +1043,7 @@ Java_com_shiqi_quickjs_QuickJS_getValueJavaObject(
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_destroyValue(
+Java_com_verve_shiqi_quickjs_QuickJS_destroyValue(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -1058,7 +1058,7 @@ Java_com_shiqi_quickjs_QuickJS_destroyValue(
 }
 
 JNIEXPORT jobject JNICALL
-Java_com_shiqi_quickjs_QuickJS_getException(
+Java_com_verve_shiqi_quickjs_QuickJS_getException(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -1066,7 +1066,7 @@ Java_com_shiqi_quickjs_QuickJS_getException(
     JSContext *ctx = (JSContext *) context;
     CHECK_NULL_RET(env, ctx, MSG_NULL_JS_CONTEXT);
 
-    jclass js_exception_class = (*env)->FindClass(env, "com/shiqi/quickjs/JSException");
+    jclass js_exception_class = (*env)->FindClass(env, "com/verve/shiqi/quickjs/JSException");
     CHECK_NULL_RET(env, js_exception_class, "Can't find JSException");
 
     jmethodID constructor_id = (*env)->GetMethodID(env, js_exception_class, "<init>", "(ZLjava/lang/String;Ljava/lang/String;)V");
@@ -1104,7 +1104,7 @@ Java_com_shiqi_quickjs_QuickJS_getException(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_getGlobalObject(
+Java_com_verve_shiqi_quickjs_QuickJS_getGlobalObject(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context
@@ -1123,7 +1123,7 @@ Java_com_shiqi_quickjs_QuickJS_getGlobalObject(
 }
 
 JNIEXPORT jlong JNICALL
-Java_com_shiqi_quickjs_QuickJS_evaluate(
+Java_com_verve_shiqi_quickjs_QuickJS_evaluate(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -1164,7 +1164,7 @@ Java_com_shiqi_quickjs_QuickJS_evaluate(
 }
 
 JNIEXPORT void JNICALL
-Java_com_shiqi_quickjs_QuickJS_evaluateBytecode(
+Java_com_verve_shiqi_quickjs_QuickJS_evaluateBytecode(
     JNIEnv *env,
     jclass __unused clazz,
     jlong context,
@@ -1191,7 +1191,7 @@ Java_com_shiqi_quickjs_QuickJS_evaluateBytecode(
 }
 
 JNIEXPORT jbyteArray JNICALL
-Java_com_shiqi_quickjs_QuickJS_compileJsToBytecode(
+Java_com_verve_shiqi_quickjs_QuickJS_compileJsToBytecode(
         JNIEnv *env,
         jclass __unused clazz,
         jlong context,
@@ -1239,7 +1239,7 @@ Java_com_shiqi_quickjs_QuickJS_compileJsToBytecode(
 }
 
 JNIEXPORT jint JNICALL
-Java_com_shiqi_quickjs_QuickJS_executePendingJob(JNIEnv *env, jclass clazz, jlong context) {
+Java_com_verve_shiqi_quickjs_QuickJS_executePendingJob(JNIEnv *env, jclass clazz, jlong context) {
     JSContext *ctx = (JSContext *) context;
     CHECK_NULL_RET(env, ctx, MSG_NULL_JS_CONTEXT);
 
@@ -1257,7 +1257,7 @@ JNI_OnLoad(JavaVM *vm, void __unused * reserved) {
         return JNI_ERR;
     }
 
-    jclass interrupt_handler_clazz = (*env)->FindClass(env, "com/shiqi/quickjs/JSRuntime$InterruptHandler");
+    jclass interrupt_handler_clazz = (*env)->FindClass(env, "com/verve/shiqi/quickjs/JSRuntime$InterruptHandler");
     if (interrupt_handler_clazz == NULL) {
         return JNI_ERR;
     }

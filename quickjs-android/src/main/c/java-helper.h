@@ -4,7 +4,7 @@
 #include <jni.h>
 
 #define CLASS_NAME_ILLEGAL_STATE_EXCEPTION "java/lang/IllegalStateException"
-#define CLASS_NAME_JS_DATA_EXCEPTION "com/shiqi/quickjs/JSDataException"
+#define CLASS_NAME_JS_DATA_EXCEPTION "com/verve/shiqi/quickjs/JSDataException"
 
 #define THROW_EXCEPTION(ENV, EXCEPTION_NAME, ...)                               \
     do {                                                                        \

@@ -4,7 +4,7 @@ plugins {
     id 'com.android.library' version '8.1.4' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
 }
-def VERSION = "1.0"
+def VERSION = "1.3"
 def versionName = buildVersionName(VERSION)
 
 allprojects {
@@ -20,8 +20,8 @@ subprojects { project ->
                 name = "PublicJfrog"
                 url = uri("https://verve.jfrog.io/artifactory/verve-gradle-release-local")
                 credentials {
-                    username = "paste_username"
-                    password = "paste_password"
+                    username = "madhur.lalit@verve.com"
+                    password = "Jetsetgo@1"
                 }
             }
         }

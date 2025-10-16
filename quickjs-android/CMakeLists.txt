@@ -9,14 +9,15 @@ else ()
 endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 include_directories(../quickjs/include)
-add_subdirectory(../quickjs ${CMAKE_CURRENT_BINARY_DIR}/quickjs)
-
+include_directories(../quickjs/vendor/mimalloc/include)
+add_subdirectory(../quickjs/vendor/mimalloc ${CMAKE_CURRENT_BINARY_DIR}/mimalloc)
+add_subdirectory(../quickjs/src ${CMAKE_CURRENT_BINARY_DIR}/quickjs)
 set(QUICKJS_ANDROID_SOURCES
         src/main/c/quickjs-jni.c
         src/main/c/java-method.c
         src/main/c/java-object.c
         src/main/c/java-helper.c
-    )
+)
 
 if (LEAK_TRIGGER)
     set(COMMON_FLAGS -DLEAK_TRIGGER)
