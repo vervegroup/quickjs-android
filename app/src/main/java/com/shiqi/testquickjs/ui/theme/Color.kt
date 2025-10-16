@@ -1,4 +1,4 @@
-package com.shiqi.testquickjs.ui.theme
+package com.verve.shiqi.testquickjs.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

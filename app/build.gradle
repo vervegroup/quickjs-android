@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace 'com.shiqi.testquickjs'
+    namespace 'com.verve.shiqi.testquickjs'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.shiqi.testquickjs"
+        applicationId "com.verve.shiqi.testquickjs"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

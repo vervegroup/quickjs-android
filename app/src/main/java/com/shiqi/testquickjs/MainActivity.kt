@@ -1,4 +1,4 @@
-package com.shiqi.testquickjs
+package com.verve.shiqi.testquickjs
 
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.shiqi.testquickjs.ui.theme.QuickJSTheme
+import com.verve.shiqi.testquickjs.ui.theme.QuickJSTheme
 
 class MainActivity : ComponentActivity() {
     companion object {

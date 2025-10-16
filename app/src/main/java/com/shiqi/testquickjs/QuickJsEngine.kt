@@ -1,4 +1,4 @@
-package com.shiqi.testquickjs
+package com.verve.shiqi.testquickjs
 
 import android.content.Context
 import android.os.Handler
